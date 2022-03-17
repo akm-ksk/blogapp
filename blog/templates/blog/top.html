@@ -1,0 +1,48 @@
+{% extends 'blog/base.html' %}
+
+{% block contet %}
+<main id="list" class="cntIn">
+  {% if tag %}
+  <p class="listFilter">タグ：#{{tag}}</p>
+  {% elif category %}
+  <p class="listFilter">カテゴリー：{{category}}</p>
+  {% endif %}
+  <ul>
+    {% for post in posts %}
+    {% if post.publish or user.is_authenticated %}
+    <li class="list">
+      <h2 class="listTitle">
+        {% if not post.publish %}非公開:{% endif %}
+        {{post.title}}
+      </h2>
+      <ul class="dateData flexBox">
+        <li>投稿:{{post.create_day}}</li>
+        {% if not post.create_day|date:'ymd' == post.update_day|date:'ymd' %}
+        <li>更新:{{post.update_day}}</li>
+        {% endif %}
+      </ul>
+      <img class="listImg" src="{{post.pic.url}}" alt="{{post.title}}">
+      <p class="listText">{{post.text | linebreaksbr | truncatechars:50 }}</p>
+      <ul class="listTags">
+        {% for key in post.tag.all %}
+        <li>
+          <a href="{% url 'Tag' key.slug %}">
+            #{{key}}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% if post.category %}
+      <a class="listCategory" href="{% url 'Category' post.category.slug %}">{{post.category}}</a>
+      {% endif %}
+      <div class="listDetail">
+        <a href="{% url 'Detail' post.pk %}">この日記を見る</a>
+      </div>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% include 'blog/components/paginatetion.html' %}
+</main>
+
+{% endblock contet %}

@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block contet %}
+<main id="detail" class="cntIn">
+  <div class="titleArea">
+    <h1 class="title">
+      {% if not post.publish %}非公開:{% endif %}
+      {{post.title}}
+    </h1>
+    <ul class="dateData flexBox">
+      <li>投稿:{{post.create_day}}</li>
+      {% if not post.create_day|date:'ymd' == post.update_day|date:'ymd' %}
+      <li>更新:{{post.update_day}}</li>
+      {% endif %}
+    </ul>
+    <ul class="tags">
+      {% for key in post.tag.all %}
+      <li>
+        <a href="{% url 'Tag' key.slug %}">#{{key}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% if post.category %}
+    <a class="category" href="">{{post.category}}</a>
+    {% endif %}
+  </div>
+  <img class="" src="{{post.pic.url}}" alt="{{post.title}}">
+  <p class="text">{{post.text | linebreaksbr}}</p>
+</main>
+{% endblock contet %}

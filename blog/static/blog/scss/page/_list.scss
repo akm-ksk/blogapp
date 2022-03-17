@@ -1,0 +1,63 @@
+@use '../module/mixin';
+@use '../module/colors';
+
+#list{
+  .listFilter{
+    margin: 0 0 60px;
+    border-bottom: 1px solid colors.$darkgray;
+    padding: 0 0 20px;
+    font-size: 24px;
+    font-weight: 500;
+    @media only screen and (max-width: 768px) {
+      margin: 0 0 40px;
+      padding: 0 0 10px;
+      font-size: 22px;
+    }
+  }
+
+  .list{
+    margin: 0 0 80px;
+    border-bottom: 1px solid colors.$darkgray ;
+    padding: 0 0 40px;
+    @media only screen and (max-width: 768px){
+      margin: 0 0 40px;
+      padding: 0 0 20px;
+    }
+  }
+  .listTitle{
+    font-size: 24px;
+    @media only screen and (max-width: 768px){
+      font-size: 20px;
+    }
+  }
+  .dateData{
+    @include mixin.date($margin: 0 0 40px);
+    @media only screen and (max-width: 768px) {
+    margin: 0 0 10px;
+  }
+  }
+  .listImg{
+    margin: 0 auto 30px;
+    @media only screen and (max-width: 768px){
+      margin: 0 0 15px;
+    }
+  }
+  .listText{
+    margin: 0 auto 10px;
+    font-size: 18px;
+    @media only screen and (max-width: 768px){
+      font-size: 16px;
+    }
+  }
+  .listDetail{
+    text-align: right;
+    color: colors.$linkBlue;
+  }
+  .listTags{
+    margin: 0 0 10px;
+    @include mixin.tags($font-size:16px);
+  }
+  .listCategory{
+    @include mixin.category;
+  }
+}

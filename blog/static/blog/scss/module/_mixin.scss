@@ -1,0 +1,34 @@
+@use "./colors";
+
+@mixin tags($font-size:12px) {
+  display: flex;
+  li{
+    margin: 0 1em 0 0;
+  }
+  a{
+    font-size:$font-size;
+    color: colors.$linkBlue;
+    @media only screen and (max-width: 768px){
+      font-size: 14px;
+    }
+  }
+}
+
+@mixin category {
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: colors.$darkgray;
+  color: colors.$pureWhite;
+  @media only screen and (max-width: 768px){
+    font-size: 14px;
+  }
+}
+
+@mixin date($margin) {
+  flex-direction: column;
+  align-items: flex-end;
+  margin: $margin;
+  li{
+    font-size: 14px;
+  }
+}

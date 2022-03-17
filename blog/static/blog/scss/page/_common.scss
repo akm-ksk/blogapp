@@ -1,0 +1,75 @@
+@use '../module/mixin';
+@use '../module/colors';
+
+img{
+  display: block;
+}
+a{
+  cursor: pointer;
+  &:hover{
+    opacity: 0.7;
+  }
+}
+.cntIn{
+  margin: 0 auto;
+  max-width: 1024px;
+  width: 94%;
+}
+.flexBox{
+  display: flex;
+}
+.gridBox{
+  display: grid;
+}
+body{
+  margin: 65px 0 0;
+  @media only screen and (max-width: 768px) {
+    margin: 50px 0 0;
+  }
+}
+header{
+  position: fixed;
+  border-bottom: 1px solid #000;
+  padding: 15px 0;
+  width: 100%;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  #headerLogo{
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 1;
+    cursor: pointer;
+    @media only screen and (max-width: 768px){
+      font-size: 20px;
+    }
+  }
+}
+main{
+  padding: 60px 0 120px;
+  @media only screen and (max-width: 768px) {
+    padding: 30px 0 60px;
+  }
+}
+.pagination{
+  justify-content: center;
+  align-items: center;
+
+  a,
+  span{
+    padding: 0 0.5em 3px;
+    border-bottom: 1px solid rgba(0,0,0,0);
+  }
+  span{
+    border-bottom: 1px solid colors.$linkBlue;
+  }
+}
+footer{
+  border-top: 1px solid colors.$darkgray;
+  padding: 10px 0 30px;
+  font-size: 10px;
+  text-align: center;
+  @media only screen and (max-width: 768px) {
+    padding: 10px 0 15px;
+  }
+}
